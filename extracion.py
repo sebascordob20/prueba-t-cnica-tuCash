@@ -90,18 +90,18 @@ def agregar_datos_csv(csv_directorio):
         datos_producto = extraer_datos_paginas(url) #Guardamos todas las URL del archivo XML en una lista.
         if datos_producto:
             info_lista_productos.append(datos_producto)
-        time.sleep(random.uniform(1, 3))
+        time.sleep(random.uniform(1, 3)) #generando número aleatorio para dormir la ejecución del programa.
     
-    if not os.path.exists(csv_directorio):
+    if not os.path.exists(csv_directorio): #Gestionando el directorio para guardar el archivo CSV de productos.
         os.makedirs(csv_directorio)
 
-    ruta_archivo_csv = os.path.join(csv_directorio, 'productos.csv')
+    ruta_archivo_csv = os.path.join(csv_directorio, 'productos.csv') #Guardando el archivo de productos en el directorio productos de la carpeta raiz del proyecto.
 
-    with open(ruta_archivo_csv, mode='w', newline='', encoding='utf-8') as archivo:
+    with open(ruta_archivo_csv, mode='w', newline='', encoding='utf-8') as archivo: #Manipulamos el archivo para poder añadirle filas e información.
         escribir_archivo = csv.writer(archivo)
         escribir_archivo.writerow(['URL', 'categoria_producto', 'tipo_producto', 'tipo_producto_especifico', 'id_producto', 'titulo_producto', 'descuento_producto', 'cantidad_producto', 'precio_total', 'material'])
         
-        for info in info_lista_productos:
+        for info in info_lista_productos: #Guardamos la información de todos los productos en el archivo CSV de productos.
             escribir_archivo.writerow([
                 info['url'], 
                 info['categoria_producto'], 
@@ -115,8 +115,8 @@ def agregar_datos_csv(csv_directorio):
                 info['material']
             ])
     
-    print(f"Datos guardados en {ruta_archivo_csv}")
+    print(f"Datos guardados en {ruta_archivo_csv}")#Imprimiendo en consola la ruta del proyecto donde se guardó el archivo CSV de productos.
 
-# Ejecutar el script principal
+#Ejecutar el script principal
 if __name__ == "__main__":
     agregar_datos_csv('./productos/')
