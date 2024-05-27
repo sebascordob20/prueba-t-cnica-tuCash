@@ -1,0 +1,5 @@
+1. Tener python 3 o versión superior instalada en su entorno local.
+
+2. Instalar todas las dependencias del  proyecto antes de ejecutar el programa. Usar el gestor de dependencias propio
+de python, pip.
+
